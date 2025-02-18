@@ -186,6 +186,7 @@ components:
           description: description
           title: title
         slug: slug
+        url: url
       properties:
         analyticsTags:
           $ref: '#/components/schemas/ResponsesLinkAnalyticTags'
@@ -196,11 +197,14 @@ components:
           type: string
         socialMediaTags:
           $ref: '#/components/schemas/ResponsesLinkSocialMediaTags'
+        url:
+          type: string
       required:
       - analyticsTags
       - data
       - slug
       - socialMediaTags
+      - url
       type: object
     ResponsesSdkLinkResponse:
       example:
@@ -217,6 +221,7 @@ components:
               description: description
               title: title
             slug: slug
+            url: url
         api_version: 0.8008281904610115
       properties:
         api_version:
@@ -276,6 +281,7 @@ components:
             description: description
             title: title
           slug: slug
+          url: url
       properties:
         sdkLinkData:
           $ref: '#/components/schemas/ResponsesSdkLink'

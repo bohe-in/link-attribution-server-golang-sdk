@@ -23,18 +23,20 @@ type ResponsesSdkLink struct {
 	Data map[string]interface{} `json:"data"`
 	Slug string `json:"slug"`
 	SocialMediaTags ResponsesLinkSocialMediaTags `json:"socialMediaTags"`
+	Url string `json:"url"`
 }
 
 // NewResponsesSdkLink instantiates a new ResponsesSdkLink object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewResponsesSdkLink(analyticsTags ResponsesLinkAnalyticTags, data map[string]interface{}, slug string, socialMediaTags ResponsesLinkSocialMediaTags) *ResponsesSdkLink {
+func NewResponsesSdkLink(analyticsTags ResponsesLinkAnalyticTags, data map[string]interface{}, slug string, socialMediaTags ResponsesLinkSocialMediaTags, url string) *ResponsesSdkLink {
 	this := ResponsesSdkLink{}
 	this.AnalyticsTags = analyticsTags
 	this.Data = data
 	this.Slug = slug
 	this.SocialMediaTags = socialMediaTags
+	this.Url = url
 	return &this
 }
 
@@ -142,6 +144,30 @@ func (o *ResponsesSdkLink) SetSocialMediaTags(v ResponsesLinkSocialMediaTags) {
 	o.SocialMediaTags = v
 }
 
+// GetUrl returns the Url field value
+func (o *ResponsesSdkLink) GetUrl() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Url
+}
+
+// GetUrlOk returns a tuple with the Url field value
+// and a boolean to check if the value has been set.
+func (o *ResponsesSdkLink) GetUrlOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Url, true
+}
+
+// SetUrl sets field value
+func (o *ResponsesSdkLink) SetUrl(v string) {
+	o.Url = v
+}
+
 func (o ResponsesSdkLink) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -156,6 +182,7 @@ func (o ResponsesSdkLink) ToMap() (map[string]interface{}, error) {
 	toSerialize["data"] = o.Data
 	toSerialize["slug"] = o.Slug
 	toSerialize["socialMediaTags"] = o.SocialMediaTags
+	toSerialize["url"] = o.Url
 	return toSerialize, nil
 }
 

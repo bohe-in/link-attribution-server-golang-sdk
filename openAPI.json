@@ -250,13 +250,17 @@
                     },
                     "socialMediaTags": {
                         "$ref": "#/components/schemas/ResponsesLinkSocialMediaTags"
+                    },
+                    "url": {
+                        "type": "string"
                     }
                 },
                 "required": [
                     "analyticsTags",
                     "data",
                     "slug",
-                    "socialMediaTags"
+                    "socialMediaTags",
+                    "url"
                 ]
             },
             "ResponsesSdkLinkResponse": {

@@ -8,12 +8,13 @@ Name | Type | Description | Notes
 **Data** | **map[string]interface{}** |  | 
 **Slug** | **string** |  | 
 **SocialMediaTags** | [**ResponsesLinkSocialMediaTags**](ResponsesLinkSocialMediaTags.md) |  | 
+**Url** | **string** |  | 
 
 ## Methods
 
 ### NewResponsesSdkLink
 
-`func NewResponsesSdkLink(analyticsTags ResponsesLinkAnalyticTags, data map[string]interface{}, slug string, socialMediaTags ResponsesLinkSocialMediaTags, ) *ResponsesSdkLink`
+`func NewResponsesSdkLink(analyticsTags ResponsesLinkAnalyticTags, data map[string]interface{}, slug string, socialMediaTags ResponsesLinkSocialMediaTags, url string, ) *ResponsesSdkLink`
 
 NewResponsesSdkLink instantiates a new ResponsesSdkLink object
 This constructor will assign default values to properties that have it defined,
@@ -106,6 +107,26 @@ and a boolean to check if the value has been set.
 `func (o *ResponsesSdkLink) SetSocialMediaTags(v ResponsesLinkSocialMediaTags)`
 
 SetSocialMediaTags sets SocialMediaTags field to given value.
+
+
+### GetUrl
+
+`func (o *ResponsesSdkLink) GetUrl() string`
+
+GetUrl returns the Url field if non-nil, zero value otherwise.
+
+### GetUrlOk
+
+`func (o *ResponsesSdkLink) GetUrlOk() (*string, bool)`
+
+GetUrlOk returns a tuple with the Url field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUrl
+
+`func (o *ResponsesSdkLink) SetUrl(v string)`
+
+SetUrl sets Url field to given value.
 
 
 
