@@ -1,0 +1,289 @@
+openapi: 3.0.1
+info:
+  description: This is the api used by link attribution
+  title: Link Attribution Server SDK
+  version: "0.100000"
+servers:
+- url: /
+tags:
+- description: Events
+  name: Server SDK
+paths:
+  /sdkserv/v1/links:
+    post:
+      operationId: ServerSdkCreateLink
+      parameters:
+      - explode: false
+        in: header
+        name: x-api-key
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: header
+        name: x-api-secret
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ServerSdkCreateLink'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponsesSdkLinkResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponsesAppErrorResponse'
+          description: Bad Request
+      security:
+      - api_key: []
+      tags:
+      - Server SDK
+      x-amazon-apigateway-integration:
+        type: http
+        uri: "http://${stageVariables.url}/sdkserv/v1/links"
+        httpMethod: post
+        requestParameters:
+          integration.request.header.api-gtway-ip: context.identity.sourceIp
+          integration.request.header.x-api-key: context.identity.apiKey
+          integration.request.header.x-api-secret: method.request.header.x-api-secret
+        responses:
+          "200":
+            statusCode: "200"
+            responseParameters: {}
+          "400":
+            statusCode: "400"
+            responseParameters: {}
+components:
+  schemas:
+    RequestsLinkAnalyticTags:
+      example:
+        feature: feature
+        channel: channel
+        campaign: campaign
+        tags: tags
+      properties:
+        campaign:
+          nullable: true
+          type: string
+        channel:
+          nullable: true
+          type: string
+        feature:
+          nullable: true
+          type: string
+        tags:
+          nullable: true
+          type: string
+      type: object
+    RequestsLinkRedirects:
+      example:
+        iosRedirect: iosRedirect
+        webOnly: true
+        desktopRedirect: desktopRedirect
+        androidRedirect: androidRedirect
+      properties:
+        androidRedirect:
+          type: string
+        desktopRedirect:
+          type: string
+        iosRedirect:
+          type: string
+        webOnly:
+          type: boolean
+      required:
+      - androidRedirect
+      - desktopRedirect
+      - iosRedirect
+      type: object
+    RequestsLinkSocialMediaTags:
+      example:
+        description: description
+        title': title'
+      properties:
+        description:
+          type: string
+        title':
+          type: string
+      required:
+      - description
+      - title'
+      type: object
+    ResponsesAppErrorResponse:
+      properties:
+        api_version:
+          format: double
+          type: number
+        code:
+          format: int32
+          type: integer
+        message:
+          type: string
+      required:
+      - api_version
+      - code
+      - message
+      type: object
+    ResponsesLinkAnalyticTags:
+      example:
+        feature: feature
+        channel: channel
+        campaign: campaign
+        tags: tags
+      properties:
+        campaign:
+          nullable: true
+          type: string
+        channel:
+          nullable: true
+          type: string
+        feature:
+          nullable: true
+          type: string
+        tags:
+          nullable: true
+          type: string
+      required:
+      - campaign
+      - channel
+      - feature
+      - tags
+      type: object
+    ResponsesLinkSocialMediaTags:
+      example:
+        description: description
+        title: title
+      properties:
+        description:
+          type: string
+        title:
+          type: string
+      required:
+      - description
+      - title
+      type: object
+    ResponsesSdkLink:
+      example:
+        data:
+          key: ""
+        analyticsTags:
+          feature: feature
+          channel: channel
+          campaign: campaign
+          tags: tags
+        socialMediaTags:
+          description: description
+          title: title
+        slug: slug
+      properties:
+        analyticsTags:
+          $ref: '#/components/schemas/ResponsesLinkAnalyticTags'
+        data:
+          additionalProperties: {}
+          type: object
+        slug:
+          type: string
+        socialMediaTags:
+          $ref: '#/components/schemas/ResponsesLinkSocialMediaTags'
+      required:
+      - analyticsTags
+      - data
+      - slug
+      - socialMediaTags
+      type: object
+    ResponsesSdkLinkResponse:
+      example:
+        data:
+          sdkLinkData:
+            data:
+              key: ""
+            analyticsTags:
+              feature: feature
+              channel: channel
+              campaign: campaign
+              tags: tags
+            socialMediaTags:
+              description: description
+              title: title
+            slug: slug
+        api_version: 0.8008281904610115
+      properties:
+        api_version:
+          format: double
+          type: number
+        data:
+          $ref: '#/components/schemas/ResponsesSdkLinkResponse_data'
+      required:
+      - api_version
+      - data
+      type: object
+    ServerSdkCreateLink:
+      example:
+        data:
+          key: ""
+        redirects:
+          iosRedirect: iosRedirect
+          webOnly: true
+          desktopRedirect: desktopRedirect
+          androidRedirect: androidRedirect
+        analyticsTags:
+          feature: feature
+          channel: channel
+          campaign: campaign
+          tags: tags
+        name: name
+        socialMediaTags:
+          description: description
+          title': title'
+      properties:
+        analyticsTags:
+          $ref: '#/components/schemas/RequestsLinkAnalyticTags'
+        data:
+          additionalProperties: {}
+          type: object
+        name:
+          type: string
+        redirects:
+          $ref: '#/components/schemas/RequestsLinkRedirects'
+        socialMediaTags:
+          $ref: '#/components/schemas/RequestsLinkSocialMediaTags'
+      required:
+      - name
+      title: ServerSdkCreateLink
+      type: object
+    ResponsesSdkLinkResponse_data:
+      example:
+        sdkLinkData:
+          data:
+            key: ""
+          analyticsTags:
+            feature: feature
+            channel: channel
+            campaign: campaign
+            tags: tags
+          socialMediaTags:
+            description: description
+            title: title
+          slug: slug
+      properties:
+        sdkLinkData:
+          $ref: '#/components/schemas/ResponsesSdkLink'
+      required:
+      - sdkLinkData
+      type: object
+  securitySchemes:
+    api_key:
+      in: header
+      name: x-api-key
+      type: apiKey

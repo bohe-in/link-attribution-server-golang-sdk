@@ -1,0 +1,301 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "Link Attribution Server SDK",
+        "description": "This is the api used by link attribution",
+        "version": "0.100000"
+    },
+    "paths": {
+        "/sdkserv/v1/links": {
+            "post": {
+                "tags": [
+                    "Server SDK"
+                ],
+                "operationId": "ServerSdkCreateLink",
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "x-api-key",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "x-api-secret",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "analyticsTags": {
+                                        "$ref": "#/components/schemas/RequestsLinkAnalyticTags"
+                                    },
+                                    "data": {
+                                        "type": "object",
+                                        "additionalProperties": {}
+                                    },
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "redirects": {
+                                        "$ref": "#/components/schemas/RequestsLinkRedirects"
+                                    },
+                                    "socialMediaTags": {
+                                        "$ref": "#/components/schemas/RequestsLinkSocialMediaTags"
+                                    }
+                                },
+                                "title": "ServerSdkCreateLink",
+                                "required": [
+                                    "name"
+                                ]
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponsesSdkLinkResponse"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponsesAppErrorResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-amazon-apigateway-integration": {
+                    "type": "http",
+                    "uri": "http://${stageVariables.url}/sdkserv/v1/links",
+                    "httpMethod": "post",
+                    "requestParameters": {
+                        "integration.request.header.api-gtway-ip": "context.identity.sourceIp",
+                        "integration.request.header.x-api-key": "context.identity.apiKey",
+                        "integration.request.header.x-api-secret": "method.request.header.x-api-secret"
+                    },
+                    "responses": {
+                        "200": {
+                            "statusCode": "200",
+                            "responseParameters": {}
+                        },
+                        "400": {
+                            "statusCode": "400",
+                            "responseParameters": {}
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "RequestsLinkAnalyticTags": {
+                "type": "object",
+                "properties": {
+                    "campaign": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "channel": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "feature": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "tags": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                }
+            },
+            "RequestsLinkRedirects": {
+                "type": "object",
+                "properties": {
+                    "androidRedirect": {
+                        "type": "string"
+                    },
+                    "desktopRedirect": {
+                        "type": "string"
+                    },
+                    "iosRedirect": {
+                        "type": "string"
+                    },
+                    "webOnly": {
+                        "type": "boolean"
+                    }
+                },
+                "required": [
+                    "androidRedirect",
+                    "desktopRedirect",
+                    "iosRedirect"
+                ]
+            },
+            "RequestsLinkSocialMediaTags": {
+                "type": "object",
+                "properties": {
+                    "description": {
+                        "type": "string"
+                    },
+                    "title'": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "description",
+                    "title'"
+                ]
+            },
+            "ResponsesAppErrorResponse": {
+                "type": "object",
+                "properties": {
+                    "api_version": {
+                        "type": "number",
+                        "format": "double"
+                    },
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "message": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "api_version",
+                    "code",
+                    "message"
+                ]
+            },
+            "ResponsesLinkAnalyticTags": {
+                "type": "object",
+                "properties": {
+                    "campaign": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "channel": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "feature": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "tags": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "required": [
+                    "campaign",
+                    "channel",
+                    "feature",
+                    "tags"
+                ]
+            },
+            "ResponsesLinkSocialMediaTags": {
+                "type": "object",
+                "properties": {
+                    "description": {
+                        "type": "string"
+                    },
+                    "title": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "description",
+                    "title"
+                ]
+            },
+            "ResponsesSdkLink": {
+                "type": "object",
+                "properties": {
+                    "analyticsTags": {
+                        "$ref": "#/components/schemas/ResponsesLinkAnalyticTags"
+                    },
+                    "data": {
+                        "type": "object",
+                        "additionalProperties": {}
+                    },
+                    "slug": {
+                        "type": "string"
+                    },
+                    "socialMediaTags": {
+                        "$ref": "#/components/schemas/ResponsesLinkSocialMediaTags"
+                    }
+                },
+                "required": [
+                    "analyticsTags",
+                    "data",
+                    "slug",
+                    "socialMediaTags"
+                ]
+            },
+            "ResponsesSdkLinkResponse": {
+                "type": "object",
+                "properties": {
+                    "api_version": {
+                        "type": "number",
+                        "format": "double"
+                    },
+                    "data": {
+                        "type": "object",
+                        "properties": {
+                            "sdkLinkData": {
+                                "$ref": "#/components/schemas/ResponsesSdkLink"
+                            }
+                        },
+                        "required": [
+                            "sdkLinkData"
+                        ]
+                    }
+                },
+                "required": [
+                    "api_version",
+                    "data"
+                ]
+            }
+        },
+        "securitySchemes": {
+            "api_key": {
+                "type": "apiKey",
+                "in": "header",
+                "name": "x-api-key"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Server SDK",
+            "description": "Events"
+        }
+    ]
+}
