@@ -1,4 +1,4 @@
-module github.com/bohe-in/link-attribution-server-golang-sdk
+module github.com/GIT_USER_ID/GIT_REPO_ID
 
 go 1.18
 
