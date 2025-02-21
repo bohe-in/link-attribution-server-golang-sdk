@@ -4,17 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AnalyticsTags** | [**ResponsesLinkAnalyticTags**](ResponsesLinkAnalyticTags.md) |  | 
-**Data** | **map[string]interface{}** |  | 
+**AnalyticsTags** | Pointer to [**ResponsesLinkAnalyticTags**](ResponsesLinkAnalyticTags.md) |  | [optional] 
+**Data** | Pointer to **map[string]interface{}** |  | [optional] 
 **Slug** | **string** |  | 
-**SocialMediaTags** | [**ResponsesLinkSocialMediaTags**](ResponsesLinkSocialMediaTags.md) |  | 
+**SocialMediaTags** | Pointer to [**ResponsesLinkSocialMediaTags**](ResponsesLinkSocialMediaTags.md) |  | [optional] 
 **Url** | **string** |  | 
 
 ## Methods
 
 ### NewResponsesSdkLink
 
-`func NewResponsesSdkLink(analyticsTags ResponsesLinkAnalyticTags, data map[string]interface{}, slug string, socialMediaTags ResponsesLinkSocialMediaTags, url string, ) *ResponsesSdkLink`
+`func NewResponsesSdkLink(slug string, url string, ) *ResponsesSdkLink`
 
 NewResponsesSdkLink instantiates a new ResponsesSdkLink object
 This constructor will assign default values to properties that have it defined,
@@ -48,6 +48,11 @@ and a boolean to check if the value has been set.
 
 SetAnalyticsTags sets AnalyticsTags field to given value.
 
+### HasAnalyticsTags
+
+`func (o *ResponsesSdkLink) HasAnalyticsTags() bool`
+
+HasAnalyticsTags returns a boolean if a field has been set.
 
 ### GetData
 
@@ -68,6 +73,11 @@ and a boolean to check if the value has been set.
 
 SetData sets Data field to given value.
 
+### HasData
+
+`func (o *ResponsesSdkLink) HasData() bool`
+
+HasData returns a boolean if a field has been set.
 
 ### GetSlug
 
@@ -108,6 +118,11 @@ and a boolean to check if the value has been set.
 
 SetSocialMediaTags sets SocialMediaTags field to given value.
 
+### HasSocialMediaTags
+
+`func (o *ResponsesSdkLink) HasSocialMediaTags() bool`
+
+HasSocialMediaTags returns a boolean if a field has been set.
 
 ### GetUrl
 

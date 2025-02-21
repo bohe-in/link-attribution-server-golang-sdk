@@ -110,15 +110,15 @@ components:
     RequestsLinkSocialMediaTags:
       example:
         description: description
-        title': title'
+        title: title
       properties:
         description:
           type: string
-        title':
+        title:
           type: string
       required:
       - description
-      - title'
+      - title
       type: object
     ResponsesAppErrorResponse:
       properties:
@@ -200,10 +200,7 @@ components:
         url:
           type: string
       required:
-      - analyticsTags
-      - data
       - slug
-      - socialMediaTags
       - url
       type: object
     ResponsesSdkLinkResponse:
@@ -250,7 +247,7 @@ components:
         name: name
         socialMediaTags:
           description: description
-          title': title'
+          title: title
       properties:
         analyticsTags:
           $ref: '#/components/schemas/RequestsLinkAnalyticTags'

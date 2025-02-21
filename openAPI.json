@@ -163,13 +163,13 @@
                     "description": {
                         "type": "string"
                     },
-                    "title'": {
+                    "title": {
                         "type": "string"
                     }
                 },
                 "required": [
                     "description",
-                    "title'"
+                    "title"
                 ]
             },
             "ResponsesAppErrorResponse": {
@@ -256,10 +256,7 @@
                     }
                 },
                 "required": [
-                    "analyticsTags",
-                    "data",
                     "slug",
-                    "socialMediaTags",
                     "url"
                 ]
             },

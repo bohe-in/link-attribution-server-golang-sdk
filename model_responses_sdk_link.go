@@ -19,10 +19,10 @@ var _ MappedNullable = &ResponsesSdkLink{}
 
 // ResponsesSdkLink struct for ResponsesSdkLink
 type ResponsesSdkLink struct {
-	AnalyticsTags ResponsesLinkAnalyticTags `json:"analyticsTags"`
-	Data map[string]interface{} `json:"data"`
+	AnalyticsTags *ResponsesLinkAnalyticTags `json:"analyticsTags,omitempty"`
+	Data map[string]interface{} `json:"data,omitempty"`
 	Slug string `json:"slug"`
-	SocialMediaTags ResponsesLinkSocialMediaTags `json:"socialMediaTags"`
+	SocialMediaTags *ResponsesLinkSocialMediaTags `json:"socialMediaTags,omitempty"`
 	Url string `json:"url"`
 }
 
@@ -30,12 +30,9 @@ type ResponsesSdkLink struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewResponsesSdkLink(analyticsTags ResponsesLinkAnalyticTags, data map[string]interface{}, slug string, socialMediaTags ResponsesLinkSocialMediaTags, url string) *ResponsesSdkLink {
+func NewResponsesSdkLink(slug string, url string) *ResponsesSdkLink {
 	this := ResponsesSdkLink{}
-	this.AnalyticsTags = analyticsTags
-	this.Data = data
 	this.Slug = slug
-	this.SocialMediaTags = socialMediaTags
 	this.Url = url
 	return &this
 }
@@ -48,50 +45,66 @@ func NewResponsesSdkLinkWithDefaults() *ResponsesSdkLink {
 	return &this
 }
 
-// GetAnalyticsTags returns the AnalyticsTags field value
+// GetAnalyticsTags returns the AnalyticsTags field value if set, zero value otherwise.
 func (o *ResponsesSdkLink) GetAnalyticsTags() ResponsesLinkAnalyticTags {
-	if o == nil {
+	if o == nil || IsNil(o.AnalyticsTags) {
 		var ret ResponsesLinkAnalyticTags
 		return ret
 	}
-
-	return o.AnalyticsTags
+	return *o.AnalyticsTags
 }
 
-// GetAnalyticsTagsOk returns a tuple with the AnalyticsTags field value
+// GetAnalyticsTagsOk returns a tuple with the AnalyticsTags field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ResponsesSdkLink) GetAnalyticsTagsOk() (*ResponsesLinkAnalyticTags, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.AnalyticsTags) {
 		return nil, false
 	}
-	return &o.AnalyticsTags, true
+	return o.AnalyticsTags, true
 }
 
-// SetAnalyticsTags sets field value
+// HasAnalyticsTags returns a boolean if a field has been set.
+func (o *ResponsesSdkLink) HasAnalyticsTags() bool {
+	if o != nil && !IsNil(o.AnalyticsTags) {
+		return true
+	}
+
+	return false
+}
+
+// SetAnalyticsTags gets a reference to the given ResponsesLinkAnalyticTags and assigns it to the AnalyticsTags field.
 func (o *ResponsesSdkLink) SetAnalyticsTags(v ResponsesLinkAnalyticTags) {
-	o.AnalyticsTags = v
+	o.AnalyticsTags = &v
 }
 
-// GetData returns the Data field value
+// GetData returns the Data field value if set, zero value otherwise.
 func (o *ResponsesSdkLink) GetData() map[string]interface{} {
-	if o == nil {
+	if o == nil || IsNil(o.Data) {
 		var ret map[string]interface{}
 		return ret
 	}
-
 	return o.Data
 }
 
-// GetDataOk returns a tuple with the Data field value
+// GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ResponsesSdkLink) GetDataOk() (map[string]interface{}, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Data) {
 		return map[string]interface{}{}, false
 	}
 	return o.Data, true
 }
 
-// SetData sets field value
+// HasData returns a boolean if a field has been set.
+func (o *ResponsesSdkLink) HasData() bool {
+	if o != nil && !IsNil(o.Data) {
+		return true
+	}
+
+	return false
+}
+
+// SetData gets a reference to the given map[string]interface{} and assigns it to the Data field.
 func (o *ResponsesSdkLink) SetData(v map[string]interface{}) {
 	o.Data = v
 }
@@ -120,28 +133,36 @@ func (o *ResponsesSdkLink) SetSlug(v string) {
 	o.Slug = v
 }
 
-// GetSocialMediaTags returns the SocialMediaTags field value
+// GetSocialMediaTags returns the SocialMediaTags field value if set, zero value otherwise.
 func (o *ResponsesSdkLink) GetSocialMediaTags() ResponsesLinkSocialMediaTags {
-	if o == nil {
+	if o == nil || IsNil(o.SocialMediaTags) {
 		var ret ResponsesLinkSocialMediaTags
 		return ret
 	}
-
-	return o.SocialMediaTags
+	return *o.SocialMediaTags
 }
 
-// GetSocialMediaTagsOk returns a tuple with the SocialMediaTags field value
+// GetSocialMediaTagsOk returns a tuple with the SocialMediaTags field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ResponsesSdkLink) GetSocialMediaTagsOk() (*ResponsesLinkSocialMediaTags, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.SocialMediaTags) {
 		return nil, false
 	}
-	return &o.SocialMediaTags, true
+	return o.SocialMediaTags, true
 }
 
-// SetSocialMediaTags sets field value
+// HasSocialMediaTags returns a boolean if a field has been set.
+func (o *ResponsesSdkLink) HasSocialMediaTags() bool {
+	if o != nil && !IsNil(o.SocialMediaTags) {
+		return true
+	}
+
+	return false
+}
+
+// SetSocialMediaTags gets a reference to the given ResponsesLinkSocialMediaTags and assigns it to the SocialMediaTags field.
 func (o *ResponsesSdkLink) SetSocialMediaTags(v ResponsesLinkSocialMediaTags) {
-	o.SocialMediaTags = v
+	o.SocialMediaTags = &v
 }
 
 // GetUrl returns the Url field value
@@ -178,10 +199,16 @@ func (o ResponsesSdkLink) MarshalJSON() ([]byte, error) {
 
 func (o ResponsesSdkLink) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["analyticsTags"] = o.AnalyticsTags
-	toSerialize["data"] = o.Data
+	if !IsNil(o.AnalyticsTags) {
+		toSerialize["analyticsTags"] = o.AnalyticsTags
+	}
+	if !IsNil(o.Data) {
+		toSerialize["data"] = o.Data
+	}
 	toSerialize["slug"] = o.Slug
-	toSerialize["socialMediaTags"] = o.SocialMediaTags
+	if !IsNil(o.SocialMediaTags) {
+		toSerialize["socialMediaTags"] = o.SocialMediaTags
+	}
 	toSerialize["url"] = o.Url
 	return toSerialize, nil
 }

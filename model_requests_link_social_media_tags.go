@@ -20,7 +20,7 @@ var _ MappedNullable = &RequestsLinkSocialMediaTags{}
 // RequestsLinkSocialMediaTags struct for RequestsLinkSocialMediaTags
 type RequestsLinkSocialMediaTags struct {
 	Description string `json:"description"`
-	Title string `json:"title&#39;"`
+	Title string `json:"title"`
 }
 
 // NewRequestsLinkSocialMediaTags instantiates a new RequestsLinkSocialMediaTags object
@@ -101,7 +101,7 @@ func (o RequestsLinkSocialMediaTags) MarshalJSON() ([]byte, error) {
 func (o RequestsLinkSocialMediaTags) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["description"] = o.Description
-	toSerialize["title&#39;"] = o.Title
+	toSerialize["title"] = o.Title
 	return toSerialize, nil
 }
 
