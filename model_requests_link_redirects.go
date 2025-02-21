@@ -19,9 +19,9 @@ var _ MappedNullable = &RequestsLinkRedirects{}
 
 // RequestsLinkRedirects struct for RequestsLinkRedirects
 type RequestsLinkRedirects struct {
-	AndroidRedirect string `json:"androidRedirect"`
-	DesktopRedirect string `json:"desktopRedirect"`
-	IosRedirect string `json:"iosRedirect"`
+	AndroidRedirect NullableString `json:"androidRedirect,omitempty"`
+	DesktopRedirect NullableString `json:"desktopRedirect,omitempty"`
+	IosRedirect NullableString `json:"iosRedirect,omitempty"`
 	WebOnly *bool `json:"webOnly,omitempty"`
 }
 
@@ -29,11 +29,8 @@ type RequestsLinkRedirects struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRequestsLinkRedirects(androidRedirect string, desktopRedirect string, iosRedirect string) *RequestsLinkRedirects {
+func NewRequestsLinkRedirects() *RequestsLinkRedirects {
 	this := RequestsLinkRedirects{}
-	this.AndroidRedirect = androidRedirect
-	this.DesktopRedirect = desktopRedirect
-	this.IosRedirect = iosRedirect
 	return &this
 }
 
@@ -45,76 +42,130 @@ func NewRequestsLinkRedirectsWithDefaults() *RequestsLinkRedirects {
 	return &this
 }
 
-// GetAndroidRedirect returns the AndroidRedirect field value
+// GetAndroidRedirect returns the AndroidRedirect field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RequestsLinkRedirects) GetAndroidRedirect() string {
-	if o == nil {
+	if o == nil || IsNil(o.AndroidRedirect.Get()) {
 		var ret string
 		return ret
 	}
-
-	return o.AndroidRedirect
+	return *o.AndroidRedirect.Get()
 }
 
-// GetAndroidRedirectOk returns a tuple with the AndroidRedirect field value
+// GetAndroidRedirectOk returns a tuple with the AndroidRedirect field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *RequestsLinkRedirects) GetAndroidRedirectOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.AndroidRedirect, true
+	return o.AndroidRedirect.Get(), o.AndroidRedirect.IsSet()
 }
 
-// SetAndroidRedirect sets field value
+// HasAndroidRedirect returns a boolean if a field has been set.
+func (o *RequestsLinkRedirects) HasAndroidRedirect() bool {
+	if o != nil && o.AndroidRedirect.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAndroidRedirect gets a reference to the given NullableString and assigns it to the AndroidRedirect field.
 func (o *RequestsLinkRedirects) SetAndroidRedirect(v string) {
-	o.AndroidRedirect = v
+	o.AndroidRedirect.Set(&v)
+}
+// SetAndroidRedirectNil sets the value for AndroidRedirect to be an explicit nil
+func (o *RequestsLinkRedirects) SetAndroidRedirectNil() {
+	o.AndroidRedirect.Set(nil)
 }
 
-// GetDesktopRedirect returns the DesktopRedirect field value
+// UnsetAndroidRedirect ensures that no value is present for AndroidRedirect, not even an explicit nil
+func (o *RequestsLinkRedirects) UnsetAndroidRedirect() {
+	o.AndroidRedirect.Unset()
+}
+
+// GetDesktopRedirect returns the DesktopRedirect field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RequestsLinkRedirects) GetDesktopRedirect() string {
-	if o == nil {
+	if o == nil || IsNil(o.DesktopRedirect.Get()) {
 		var ret string
 		return ret
 	}
-
-	return o.DesktopRedirect
+	return *o.DesktopRedirect.Get()
 }
 
-// GetDesktopRedirectOk returns a tuple with the DesktopRedirect field value
+// GetDesktopRedirectOk returns a tuple with the DesktopRedirect field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *RequestsLinkRedirects) GetDesktopRedirectOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.DesktopRedirect, true
+	return o.DesktopRedirect.Get(), o.DesktopRedirect.IsSet()
 }
 
-// SetDesktopRedirect sets field value
+// HasDesktopRedirect returns a boolean if a field has been set.
+func (o *RequestsLinkRedirects) HasDesktopRedirect() bool {
+	if o != nil && o.DesktopRedirect.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetDesktopRedirect gets a reference to the given NullableString and assigns it to the DesktopRedirect field.
 func (o *RequestsLinkRedirects) SetDesktopRedirect(v string) {
-	o.DesktopRedirect = v
+	o.DesktopRedirect.Set(&v)
+}
+// SetDesktopRedirectNil sets the value for DesktopRedirect to be an explicit nil
+func (o *RequestsLinkRedirects) SetDesktopRedirectNil() {
+	o.DesktopRedirect.Set(nil)
 }
 
-// GetIosRedirect returns the IosRedirect field value
+// UnsetDesktopRedirect ensures that no value is present for DesktopRedirect, not even an explicit nil
+func (o *RequestsLinkRedirects) UnsetDesktopRedirect() {
+	o.DesktopRedirect.Unset()
+}
+
+// GetIosRedirect returns the IosRedirect field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RequestsLinkRedirects) GetIosRedirect() string {
-	if o == nil {
+	if o == nil || IsNil(o.IosRedirect.Get()) {
 		var ret string
 		return ret
 	}
-
-	return o.IosRedirect
+	return *o.IosRedirect.Get()
 }
 
-// GetIosRedirectOk returns a tuple with the IosRedirect field value
+// GetIosRedirectOk returns a tuple with the IosRedirect field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *RequestsLinkRedirects) GetIosRedirectOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.IosRedirect, true
+	return o.IosRedirect.Get(), o.IosRedirect.IsSet()
 }
 
-// SetIosRedirect sets field value
+// HasIosRedirect returns a boolean if a field has been set.
+func (o *RequestsLinkRedirects) HasIosRedirect() bool {
+	if o != nil && o.IosRedirect.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetIosRedirect gets a reference to the given NullableString and assigns it to the IosRedirect field.
 func (o *RequestsLinkRedirects) SetIosRedirect(v string) {
-	o.IosRedirect = v
+	o.IosRedirect.Set(&v)
+}
+// SetIosRedirectNil sets the value for IosRedirect to be an explicit nil
+func (o *RequestsLinkRedirects) SetIosRedirectNil() {
+	o.IosRedirect.Set(nil)
+}
+
+// UnsetIosRedirect ensures that no value is present for IosRedirect, not even an explicit nil
+func (o *RequestsLinkRedirects) UnsetIosRedirect() {
+	o.IosRedirect.Unset()
 }
 
 // GetWebOnly returns the WebOnly field value if set, zero value otherwise.
@@ -159,9 +210,15 @@ func (o RequestsLinkRedirects) MarshalJSON() ([]byte, error) {
 
 func (o RequestsLinkRedirects) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["androidRedirect"] = o.AndroidRedirect
-	toSerialize["desktopRedirect"] = o.DesktopRedirect
-	toSerialize["iosRedirect"] = o.IosRedirect
+	if o.AndroidRedirect.IsSet() {
+		toSerialize["androidRedirect"] = o.AndroidRedirect.Get()
+	}
+	if o.DesktopRedirect.IsSet() {
+		toSerialize["desktopRedirect"] = o.DesktopRedirect.Get()
+	}
+	if o.IosRedirect.IsSet() {
+		toSerialize["iosRedirect"] = o.IosRedirect.Get()
+	}
 	if !IsNil(o.WebOnly) {
 		toSerialize["webOnly"] = o.WebOnly
 	}

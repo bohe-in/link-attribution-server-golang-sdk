@@ -139,23 +139,21 @@
                 "type": "object",
                 "properties": {
                     "androidRedirect": {
-                        "type": "string"
+                        "type": "string",
+                        "nullable": true
                     },
                     "desktopRedirect": {
-                        "type": "string"
+                        "type": "string",
+                        "nullable": true
                     },
                     "iosRedirect": {
-                        "type": "string"
+                        "type": "string",
+                        "nullable": true
                     },
                     "webOnly": {
                         "type": "boolean"
                     }
-                },
-                "required": [
-                    "androidRedirect",
-                    "desktopRedirect",
-                    "iosRedirect"
-                ]
+                }
             },
             "RequestsLinkSocialMediaTags": {
                 "type": "object",

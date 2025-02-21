@@ -95,17 +95,16 @@ components:
         androidRedirect: androidRedirect
       properties:
         androidRedirect:
+          nullable: true
           type: string
         desktopRedirect:
+          nullable: true
           type: string
         iosRedirect:
+          nullable: true
           type: string
         webOnly:
           type: boolean
-      required:
-      - androidRedirect
-      - desktopRedirect
-      - iosRedirect
       type: object
     RequestsLinkSocialMediaTags:
       example:

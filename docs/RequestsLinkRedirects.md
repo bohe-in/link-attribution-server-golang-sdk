@@ -4,16 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AndroidRedirect** | **string** |  | 
-**DesktopRedirect** | **string** |  | 
-**IosRedirect** | **string** |  | 
+**AndroidRedirect** | Pointer to **NullableString** |  | [optional] 
+**DesktopRedirect** | Pointer to **NullableString** |  | [optional] 
+**IosRedirect** | Pointer to **NullableString** |  | [optional] 
 **WebOnly** | Pointer to **bool** |  | [optional] 
 
 ## Methods
 
 ### NewRequestsLinkRedirects
 
-`func NewRequestsLinkRedirects(androidRedirect string, desktopRedirect string, iosRedirect string, ) *RequestsLinkRedirects`
+`func NewRequestsLinkRedirects() *RequestsLinkRedirects`
 
 NewRequestsLinkRedirects instantiates a new RequestsLinkRedirects object
 This constructor will assign default values to properties that have it defined,
@@ -47,7 +47,22 @@ and a boolean to check if the value has been set.
 
 SetAndroidRedirect sets AndroidRedirect field to given value.
 
+### HasAndroidRedirect
 
+`func (o *RequestsLinkRedirects) HasAndroidRedirect() bool`
+
+HasAndroidRedirect returns a boolean if a field has been set.
+
+### SetAndroidRedirectNil
+
+`func (o *RequestsLinkRedirects) SetAndroidRedirectNil(b bool)`
+
+ SetAndroidRedirectNil sets the value for AndroidRedirect to be an explicit nil
+
+### UnsetAndroidRedirect
+`func (o *RequestsLinkRedirects) UnsetAndroidRedirect()`
+
+UnsetAndroidRedirect ensures that no value is present for AndroidRedirect, not even an explicit nil
 ### GetDesktopRedirect
 
 `func (o *RequestsLinkRedirects) GetDesktopRedirect() string`
@@ -67,7 +82,22 @@ and a boolean to check if the value has been set.
 
 SetDesktopRedirect sets DesktopRedirect field to given value.
 
+### HasDesktopRedirect
 
+`func (o *RequestsLinkRedirects) HasDesktopRedirect() bool`
+
+HasDesktopRedirect returns a boolean if a field has been set.
+
+### SetDesktopRedirectNil
+
+`func (o *RequestsLinkRedirects) SetDesktopRedirectNil(b bool)`
+
+ SetDesktopRedirectNil sets the value for DesktopRedirect to be an explicit nil
+
+### UnsetDesktopRedirect
+`func (o *RequestsLinkRedirects) UnsetDesktopRedirect()`
+
+UnsetDesktopRedirect ensures that no value is present for DesktopRedirect, not even an explicit nil
 ### GetIosRedirect
 
 `func (o *RequestsLinkRedirects) GetIosRedirect() string`
@@ -87,7 +117,22 @@ and a boolean to check if the value has been set.
 
 SetIosRedirect sets IosRedirect field to given value.
 
+### HasIosRedirect
 
+`func (o *RequestsLinkRedirects) HasIosRedirect() bool`
+
+HasIosRedirect returns a boolean if a field has been set.
+
+### SetIosRedirectNil
+
+`func (o *RequestsLinkRedirects) SetIosRedirectNil(b bool)`
+
+ SetIosRedirectNil sets the value for IosRedirect to be an explicit nil
+
+### UnsetIosRedirect
+`func (o *RequestsLinkRedirects) UnsetIosRedirect()`
+
+UnsetIosRedirect ensures that no value is present for IosRedirect, not even an explicit nil
 ### GetWebOnly
 
 `func (o *RequestsLinkRedirects) GetWebOnly() bool`
