@@ -21,7 +21,7 @@ go get golang.org/x/net/context
 Put the package under your project folder and add the following in import:
 
 ```golang
-import linkattribution "github.com/GIT_USER_ID/GIT_REPO_ID"
+import linkattribution "github.com/bohe-in/link-attribution-server-golang-sdk"
 ```
 
 To use a proxy, set the environment variable `HTTP_PROXY`:
